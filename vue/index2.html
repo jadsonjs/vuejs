@@ -1,0 +1,133 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="utf-8">
+     <title>Lista de livros</title>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+     <link rel="stylesheet" href="css/index.css" />
+ </head>
+
+  <body>
+
+    <!--
+     Two way data binding with vue.js
+
+     Logo, a comunicação esteve restrita a JavaScript -> HTML.
+     Todavia, em muitos casos, precisamos que o contrário aconteça,
+     que os valores digitados nos campos sejam enviados ao JavaScript
+
+      -->
+    <div id="app" class="container">
+
+      <h2>{{titulo}}</h2>
+      <ul>
+          <li>{{livros[0]}}</li>
+          <li>{{livros[1]}}</li>
+      </ul>
+
+      <!--
+      Nossa próxima alteração consistirá em criar uma forma de iterar sobre uma lista de
+      livros provida pelo JavaScript.
+      O Vue.js oferece um mecanismo interessante para lidar com isso: uma diretiva chamada *** v-for ***,
+      que manipula estruturas de arrays ou listas JavaScript.
+      -->
+      <ul>
+          <li v-for="livro in livros">{{livro}}</li>
+      </ul>
+
+      <!--
+        Veja que a alteração foi muito simples: tudo que precisamos fazer
+        foi adicionar o atributo  *** v-model *** a um novo campo de input e o próprio
+        Vue.js se encarrega de fazer o resto.
+        Agora, quando recarregar a página no navegador, sempre que digitar
+        qualquer valor no campo, verá o título da lista ser alterado,
+        além de já termos o campo pré-carregado com o dado atribuído ao  titulo no JavaScript.
+      -->
+      <div class="footer">
+         <hr/>
+         <em>Modifique o título da lista:</em>
+         <input v-model="titulo"/>
+     </div>
+
+   </div>
+
+   <hr>
+   <hr>
+   <hr>
+
+   <div id="app2" class="container">
+
+     <h2>{{cabecalho}}</h2>
+
+     <!--
+      O código é bem intuitivo: veja que em ambos os campos de texto adicionamos novamente o
+      atributo  v-model, que faz o link bidirecional do valor digitado para os
+      novos atributos criados no objeto  data.
+      Além disso, temos uma nova diretiva do Vue.js: a  @keyup.enter.
+
+      Essa diretiva atrela um ouvinte de eventos de  keyup (soltura da tecla) para a tecla
+      Enter, especificamente; ou seja, sempre que dermos um enter em qualquer um
+      dos campos de texto, a função  addLivro do nosso objeto
+      Vue será chamada. O  @ constitui um atalho à diretiva  v-on, que adiciona ouvintes
+      de eventos em alusão aos que já temos no DOM
+     -->
+     <input v-model="novoLivro" @keyup.enter="addLivro"
+          placeholder="Adicionar novo livro" type="text"
+          class="form-control">
+       <input v-model="novoAutor" @keyup.enter="addLivro"
+          placeholder="Adicionar novo autor" type="text"
+          class="form-control"> <br>
+
+       <span class="input-group-btn">
+          <button @click="addLivro" class="js-add btn btn-primary btn-block"
+             type="button">Adicionar!</button>
+       </span>
+
+
+     <ul>
+           <!--
+
+             ****  v-bind ***  Ela recebe como valor uma estrutura condicional,
+             a qual terá seu valor associado à  class CSS do elemento  <li>.
+
+             No caso, quando o valor da propriedade checked de cada livro for
+             true, teremos a string “removido” sendo retornada para a
+             referida classe CSS. Isso nos abstém da obrigação de
+             ter de controlar isso via JavaScript, como vínhamos fazendo;
+
+           -->
+          <li v-for="livro in livros" v-bind:class="{ 'removido': livro.checked }">
+          <div class="checkbox">
+            <label>
+              <input class="js-livro" name="list" type="checkbox" v-model="livro.checked">
+              <big>{{livro.titulo}}</big> - <small>{{livro.autor}}</small>
+            </label>
+          </div>
+         </li>
+    </ul>
+
+    <div class="footer">
+      <hr/>
+      <em>Modifique o título da lista:</em>
+      <input v-model="cabecalho"/>
+    </div>
+
+
+
+
+
+    </div>
+
+
+  </body>
+
+  <!-- from external url
+  <script type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
+  -->
+
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script type="text/javascript" src="js/vue.js"></script>
+  <script type="text/javascript" src="js/index2.js"></script>
+</html>

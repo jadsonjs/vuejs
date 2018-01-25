@@ -14,10 +14,11 @@ $(document).ready(function() {
         * Add evento de click
         */
        function onAdd() {
-             var $ul, li, $li, $label, $div, livro;
+             var $ul, li, $li, $label, $div, livro, autor;
 
              // recuperamos o valor digitado no campo de texto de classe CSS js-novo-livro;
              livro = $('.js-novo-livro').val();
+             autor = $('.js-novo-autor').val();
 
              // valida se “livro” está vazio
              if (livro === '') {
@@ -31,21 +32,29 @@ $(document).ready(function() {
              $ul = $('ul');
              $li = $('<li>').appendTo($ul);
              $div = $('<div>')
-                    .addClass('checkbox')
-                    .appendTo($li);
+                .addClass('checkbox')
+                .appendTo($li);
 
              $label = $('<label>').appendTo($div);
              $('<input>')
-                    .attr('type', 'checkbox')
-                    .addClass('js-livro')
-                    .attr('name', 'list')
-                    .click(toggleRemovido)
-                    .appendTo($label);
+                .attr('type', 'checkbox')
+                .addClass('js-livro')
+                .attr('name', 'list')
+                .click(toggleRemovido)
+                .appendTo($label);
 
-             $label.append(livro);
+            $('<big>')
+               .appendTo($label)
+               .append(livro);
+
+            $label.append(" - ");
+
+            $('<small>')
+               .appendTo($label)
+               .append(autor);
 
              // limpamos o campo de texto para futura digitação
-             $('.js-novo-livro').val('');
+             $('.js-novo-livro, .js-novo-autor').val('');
        }
 
        /**
