@@ -9,6 +9,18 @@
 
     <div id="app"> {{ message }}  </div>
 
+    <div id="app-2">
+      <span v-if="conditional">Test Conditional with Vue</span>
+    </div>
+
+    <div id="app-3">
+      <ol>
+        <li v-for="l in linguagens">
+          {{ l.text }}
+        </li>
+      </ol>
+    </div>
+
     <!--
      el: define the part of html code the vue will act
      data: object with the data that will be manipulate in the application context
@@ -20,6 +32,24 @@
                 message: "Hello World!"
             }
         });
+
+        var app2 = new Vue({
+          el: '#app-2',
+          data: {
+            conditional: true
+          }
+        })
+
+        var app3 = new Vue({
+          el: '#app-3',
+          data: {
+            linguagens: [
+              { text: 'JavaScript' },
+              { text: 'Jquery' },
+              { text: 'Vue' }
+            ]
+          }
+        })
     </script>
 </body>
 </html>
