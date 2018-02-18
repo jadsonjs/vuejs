@@ -7,12 +7,22 @@
 </head>
 <body>
 
+
+    <div id="app-1">
+      <h2>{{ message }}</h2>
+      <input v-model="message" class="form-control">
+    </div>
+
+     <br/><br/><br/>
+
     <div id="app-2">
       <span v-if="conditional == 0 "> Test Conditional v-if {{conditional}}</span>
       <span v-else-if="conditional == 1"> Test Conditional v-else-if {{conditional}}</span>
       <span v-else> Test Conditional v-else {{conditional}}</span>
     </div>
 
+    <br/><br/><br/>
+    
     <div id="app-3">
       <ol>
         <li v-for="l in linguagens">
@@ -26,6 +36,14 @@
      data: object with the data that will be manipulate in the application context
      -->
     <script type="text/javascript">
+
+       var app1 = new Vue({
+           el: '#app-1',
+           data: {
+               message: 'Enter Your Name...'
+           }
+        })
+
 
         var app2 = new Vue({
           el: '#app-2',
