@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Hello World - Vue.js</title>
+   <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+
+    <div id="app-2">
+      <span v-if="conditional == 0 "> Test Conditional v-if {{conditional}}</span>
+      <span v-else-if="conditional == 1"> Test Conditional v-else-if {{conditional}}</span>
+      <span v-else> Test Conditional v-else {{conditional}}</span>
+    </div>
+
+    <div id="app-3">
+      <ol>
+        <li v-for="l in linguagens">
+          {{ l.text }}
+        </li>
+      </ol>
+    </div>
+
+    <!--
+     el: define the part of html code the vue will act
+     data: object with the data that will be manipulate in the application context
+     -->
+    <script type="text/javascript">
+
+        var app2 = new Vue({
+          el: '#app-2',
+          data: {
+            conditional: 2
+          }
+        })
+
+        var app3 = new Vue({
+          el: '#app-3',
+          data: {
+            linguagens: [
+              { text: 'JavaScript' },
+              { text: 'Jquery' },
+              { text: 'Vue' }
+            ]
+          }
+        })
+    </script>
+</body>
+</html>
