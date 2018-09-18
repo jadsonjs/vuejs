@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Classes and Style - Vue.js</title>
+   <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+
+    <style> 
+        .active{
+            color: blue;
+        }
+    </style>
+
+
+    <ol id="components-demo">
+        
+        <div v-bind:class="{ active: isActive }"> bind css class active </div>
+
+        <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }"> bind css style </div>
+
+    </ol>
+
+   
+
+    <script type="text/javascript">
+        
+        // new Vue instance
+        new Vue({ 
+                el: '#components-demo',
+                data: {
+                    isActive: true,
+                    activeColor: 'red',
+                    fontSize: 30
+                }
+         })
+        
+    </script>
+  
+</body>
+</html>

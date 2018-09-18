@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Components - Vue.js</title>
+   <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+
+    <ol id="components-demo">
+        <my-item
+             v-for="carItem in myListOfCars"
+             v-bind:car="carItem"
+             v-bind:key="carItem.id">
+        </my-item>
+    </ol>
+
+    <script type="text/javascript">
+        
+        // component definition 
+        Vue.component('my-item', {
+            props: ['car'],
+            template: '<li>This is a Vue.js component of {{car.name}} </li>'
+        })
+
+        // new Vue instance
+        new Vue({ 
+                el: '#components-demo',
+                data: {
+                    myListOfCars: [
+                        { id: 1, name: 'Ferrari' },
+                        { id: 2, name: 'Mclaren' },
+                        { id: 3, name: 'Mercedes' }
+                    ]
+                }
+         })
+        
+    </script>
+  
+</body>
+</html>
