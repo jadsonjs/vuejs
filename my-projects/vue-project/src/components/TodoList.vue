@@ -2,6 +2,7 @@
 <div class="row">
     <div class="columns">
       <div class="column">
+        
         <div class="field is-grouped" v-for="(tarefa, index) in tarefas">
           
           <p class="control">
