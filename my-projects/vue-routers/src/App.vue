@@ -9,7 +9,7 @@
       <!-- `<router-link>` will be rendered as an `<a>` tag by default -->
       <router-link to="/foo">Go to Foo</router-link>
       <router-link to="/bar">Go to Bar</router-link>
- 
+      
     </p>
 
     <!-- route outlet -->
@@ -21,18 +21,8 @@
 
 <script>
 
-  import Bar from './components/Bar'
-  import Foo from './components/Foo'
-
-
   export default {
     name: 'app',
-
-    /// Define the component ///
-    components: {
-      Bar,
-      Foo
-    },
 
     data () {
       return {
