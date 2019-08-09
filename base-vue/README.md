@@ -1,6 +1,7 @@
 # base vue
-     A simple vue.js project with router, vuex and boostrap-vue.
-     This Application is based on Simple Sidebar Bootstrap Template (https://startbootstrap.com/template-overviews/simple-sidebar)
+
+A simple vue.js project with router, vuex and boostrap-vue.
+This Application is based on Simple Sidebar Bootstrap Template (https://startbootstrap.com/template-overviews/simple-sidebar)
 
 
 
