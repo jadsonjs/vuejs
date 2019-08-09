@@ -2,7 +2,9 @@
      A simple vue.js project with router, vuex and boostrap-vue.
      This Application is based on Simple Sidebar Bootstrap Template (https://startbootstrap.com/template-overviews/simple-sidebar)
 
-    ![Screenshot](https://github.com/jadsonjs/vuejs/blob/master/base-vue/src/assets/img/home.png)
+
+
+![Screenshot](https://github.com/jadsonjs/vuejs/blob/master/base-vue/src/assets/img/home.png)
 
 
 This project has no communication with back-end, it is just a generic font-end project to be adapted to a full project.
