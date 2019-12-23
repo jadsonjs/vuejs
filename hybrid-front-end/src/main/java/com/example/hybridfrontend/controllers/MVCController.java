@@ -32,8 +32,7 @@ package com.example.hybridfrontend.controllers;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -59,6 +58,24 @@ public class MVCController {
         return "welcome"; //view welcome.html
     }
 
+    @GetMapping("/mouths")
+    public String getMouths(Model model) {
+        MonthForm form = new MonthForm();
+        form.setMonths(Arrays.asList("January", "February", "March", "April",
+                "May", "June", "July", "August",
+                "September", "October", "November", "December") );
+        model.addAttribute("form", form);
+        return "welcome"; //view welcome.html
+    }
+
+    @PostMapping(value="/submitMouths")
+    public String submitMouths(@ModelAttribute MonthForm form, Model model){
+        System.out.println(form);
+        for ( String mouth: form.getMonths()){
+            System.out.println(mouth);
+        }
+        return "welcome"; //view welcome.html
+    }
 
 }
 

@@ -22,41 +22,30 @@
  * THE SOFTWARE.
  *
  *
- * eligere
- * com.example.eligere.controller
- * RestController
- * 19/12/2019
+ * hybrid-front-end
+ * com.example.hybridfrontend.controllers
+ * MonthForm
+ * 22/12/19
  */
 package com.example.hybridfrontend.controllers;
 
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
- * TODO Please, include a significant comment here!
- *
- * @author Jadson Santos - jadsonjs@gmail.com
- * @version 1.0
- * @since 19/12/2019 10:20
+ * Spring form
+ * Jadson Santos - jadsonjs@gmail.com
  */
-@RestController
-@CrossOrigin
-@RequestMapping(path = "/rest")
-public class VueController {
+public class MonthForm {
 
+    private List<String> months;
 
-    @GetMapping("/get")
-    public List<String> getListOfMonths() {
-        return Arrays.asList("January", "February", "March", "April",
-                "May", "June", "July", "August",
-                "September", "October", "November", "December") ;
+    public List<String> getMonths() {
+        return months;
+    }
+
+    public void setMonths(List<String> months) {
+        this.months = months;
     }
 
 }
-
-
