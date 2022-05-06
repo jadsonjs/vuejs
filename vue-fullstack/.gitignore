@@ -2,9 +2,15 @@ HELP.md
 target/
 dist/
 node_modules/
+node/
+.gradle
+/build/
+gradle-app.setting
+
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+!gradle-wrapper.jar
 
 ### STS ###
 .apt_generated
