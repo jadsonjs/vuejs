@@ -1,0 +1,62 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.0.5'
+	id 'io.spring.dependency-management' version '1.1.0'
+
+	/**
+	 * Plugin to build Vue application inside Jar File
+	 * https://siouan.github.io/frontend-gradle-plugin/getting-started/
+	 */
+	id 'org.siouan.frontend-jdk11' version '6.0.0'
+
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+def nodeVersionProp = "16.15.0"
+def frontendBuild = "build"
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+
+frontend {
+	packageJsonDirectory = file("${projectDir}/src/frontend")
+	nodeInstallDirectory = file("${projectDir}/src/frontend/.node")
+	nodeDistributionUrlRoot = "https://nodejs.org/dist/"
+	nodeVersion = nodeVersionProp
+	assembleScript = "run ${frontendBuild}"
+}
+
+/**
+ * Just the gradle frontend plugin, do not copy the files to jar, so, we need to do that.
+ * Copy vue frontend files to inside the springboot jar /resources/main/static directory
+ */
+tasks.register('copyVueFiles') {
+	doLast {
+		copy {
+			println "copying values from ${projectDir}/src/frontend/dist"
+			println "to ${buildDir}/resources/main/static"
+			from "${projectDir}/src/frontend/dist"
+			into "${buildDir}/resources/main/static"
+		}
+	}
+}
+
+tasks.withType(JavaCompile) {
+	dependsOn tasks.named('copyVueFiles')
+}
+
